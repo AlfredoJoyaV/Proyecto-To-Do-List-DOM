@@ -1,5 +1,10 @@
 import createHeader from './header.js';
 
+import createFooter from './footer.js';
+const footer = createFooter(); 
+document.body.appendChild(footer); // O donde quieras agregar el footerimport './style.css'
+const app = document.getElementById('app');
+
 const header = createHeader();
 document.body.prepend(header); // O donde quieras agregar el header
 
@@ -10,16 +15,13 @@ const listasAgregadas = `
     <input type="text" id="listaInput" placeholder="Escribe el nombre de la lista">
     <button id="agregarLista">Agregar Lista</button>
 </div>    
-
 `;
 
 //Creamos el contenedor de las listas de tareas
-const contenedosListas = document.createElement('div');
-contenedosListas.innerHTML = listasAgregadas;
-app.appendChild(contenedosListas);
+const contenedorListas = document.createElement('div');
+contenedorListas.innerHTML = listasAgregadas;
+app.appendChild(contenedorListas);
 
-import createFooter from './footer.js';
-const footer = createFooter(); 
-document.body.appendChild(footer); // O donde quieras agregar el footerimport './style.css'
-const app = document.getElementById('app');
+
+
 
