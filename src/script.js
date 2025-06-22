@@ -1,14 +1,17 @@
 import createHeader from './header.js';
 import createFooter from './footer.js';
+import './style.css'; // Asegúrate que este archivo exista y se importe al inicio
+
 const app = document.getElementById('app');
 
+// Importamos en header y fotter
 const header = createHeader();
 document.body.prepend(header);
 
-const footer = createFooter(); 
-document.body.appendChild(footer); // O donde quieras agregar el footerimport './style.css'
+const footer = createFooter();
+document.body.appendChild(footer);
 
-// Agregar la lista de tareas
+// Hacemos el cuerpo del HTML
 const listasAgregadas = `
 <div class="listas">
     <h1>Agrega una tarea</h1>
@@ -17,79 +20,96 @@ const listasAgregadas = `
         <button id="agregarTarea">Agregar tarea</button>
     </div>
     <div id="enlistar">
-    <h2>Lista de Tareas</h2>
-    <ul id="listaTareas"></ul>
+        <h2>Lista de Tareas</h2>
+        <ul id="listaTareas"></ul>
     </div>
 </div>
 `;
- 
-// Creamos el contenedor de las listas de tareas
+
 const contenedorListas = document.createElement('div');
 contenedorListas.innerHTML = listasAgregadas;
 app.appendChild(contenedorListas);
- 
-// Referencia a la lista visual de tareas
-const listaTareas = document.getElementById('listaTareas');
- 
-// Función para cargar tareas desde localStorage
-function cargarTareas() {
-    const tareas = JSON.parse(localStorage.getItem('tareas')) || [];
-    listaTareas.innerHTML = '';
-    tareas.forEach((tarea, idx) => {
-        const li = document.createElement('li');
-        li.textContent = tarea;
-        // Boton para editar tarea
-        const btnEditar = document.createElement('button');
-        btnEditar.textContent = 'Editar';
-        btnEditar.onclick = () => editarTarea(idx);
-        li.appendChild(btnEditar);
 
-        // Botón para eliminar tarea
-        const btnEliminar = document.createElement('button');
-        btnEliminar.textContent = 'Eliminar';
-        btnEliminar.onclick = () => eliminarTarea(idx);
-        li.appendChild(btnEliminar);
-        listaTareas.appendChild(li);
-    });
+// Declaramos las constantes
+const listaTareas = document.getElementById('listaTareas');
+const inputTarea = document.getElementById('listaInput');
+const btnAgregar = document.getElementById('agregarTarea');
+
+// Lo guardamos en el LocalStorage
+function obtenerTareas() {
+    return JSON.parse(localStorage.getItem('tareas')) || [];
 }
- 
-// Función para guardar tareas en localStorage
+
 function guardarTareas(tareas) {
     localStorage.setItem('tareas', JSON.stringify(tareas));
 }
- 
-// Evento para agregar nueva tarea
-document.getElementById('agregarTarea').addEventListener('click', () => {
-    const input = document.getElementById('listaInput');
-    const tarea = input.value.trim();
-    if (tarea) {
-        const tareas = JSON.parse(localStorage.getItem('tareas')) || [];
-        tareas.push(tarea);
+
+// Hacemos una funcion del cargado de tareas
+function cargarTareas() {
+    const tareas = obtenerTareas();
+    listaTareas.innerHTML = '';
+
+    tareas.forEach((tareaObj, idx) => {
+        const li = document.createElement('li');
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = tareaObj.completada;
+        checkbox.addEventListener('change', () => {
+            tareas[idx].completada = checkbox.checked;
+            guardarTareas(tareas);
+            cargarTareas();
+        });
+
+        const span = document.createElement('span');
+        span.textContent = tareaObj.texto;
+        if (tareaObj.completada) {
+            span.style.textDecoration = 'line-through';
+        }
+
+        const btnEditar = document.createElement('button');
+        btnEditar.textContent = 'Editar';
+        btnEditar.onclick = () => editarTarea(idx);
+
+        const btnEliminar = document.createElement('button');
+        btnEliminar.textContent = 'Eliminar';
+        btnEliminar.onclick = () => eliminarTarea(idx);
+
+        li.append(checkbox, span, btnEditar, btnEliminar);
+        listaTareas.appendChild(li);
+    });
+}
+
+// Agregamos las tareas
+btnAgregar.addEventListener('click', () => {
+    const texto = inputTarea.value.trim();
+    if (texto) {
+        const tareas = obtenerTareas();
+        tareas.push({ texto, completada: false });
         guardarTareas(tareas);
         cargarTareas();
-        input.value = '';
-       
+        inputTarea.value = '';
     }
 });
- 
-// Función para eliminar tarea
+
+// Eliminamos tareas
 function eliminarTarea(idx) {
-    const tareas = JSON.parse(localStorage.getItem('tareas')) || [];
+    const tareas = obtenerTareas();
     tareas.splice(idx, 1);
     guardarTareas(tareas);
     cargarTareas();
 }
 
-// Función para editar tarea
+// Editamos tareas
 function editarTarea(idx) {
-    const tareas = JSON.parse(localStorage.getItem('tareas')) || [];
-    const nuevaTarea = prompt('Coloca la edición de la tarea:', tareas[idx]);
+    const tareas = obtenerTareas();
+    const nuevaTarea = prompt('Coloca la edición de la tarea:', tareas[idx].texto);
     if (nuevaTarea) {
-        tareas[idx] = nuevaTarea;
+        tareas[idx].texto = nuevaTarea.trim();
         guardarTareas(tareas);
         cargarTareas();
     }
-};
+}
 
-// Inicializar la lista al cargar la página
+
 cargarTareas();
