@@ -1,6 +1,6 @@
 import createHeader from './header.js';
 import createFooter from './footer.js';
-import './style.css'; // Asegúrate que este archivo exista y se importe al inicio
+import './style.css';
 
 const app = document.getElementById('app');
 
@@ -54,6 +54,7 @@ function cargarTareas() {
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+        checkbox.id="done";
         checkbox.checked = tareaObj.completada;
         checkbox.addEventListener('change', () => {
             tareas[idx].completada = checkbox.checked;
@@ -75,7 +76,7 @@ function cargarTareas() {
         btnEliminar.textContent = 'Eliminar';
         btnEliminar.onclick = () => eliminarTarea(idx);
 
-        li.append(checkbox, span, btnEditar, btnEliminar);
+        li.append(checkbox, span,  btnEditar, btnEliminar);
         listaTareas.appendChild(li);
     });
 }
