@@ -7,6 +7,8 @@ const app = document.getElementById('app');
 // Importamos en header y fotter
 const header = createHeader();
 document.body.prepend(header);
+
+
  
 const footer = createFooter();
 document.body.appendChild(footer);
@@ -120,6 +122,19 @@ inputTarea.addEventListener('keydown', (e) => {
         btnAgregar.click();
     }
 });
- 
+
+//logica modo oscuro
+const btnModoOscuro = document.getElementById('modoOscuroBtn');
+btnModoOscuro.addEventListener('click', () => {
+    document.body.classList.toggle('modo-oscuro');
+
+    // Cambiar texto del botón según el estado
+    if (document.body.classList.contains('modo-oscuro')) {
+        btnModoOscuro.textContent = 'Modo Claro 🌞';
+    } else {
+        btnModoOscuro.textContent = 'Modo Oscuro 🌚';
+    }
+});
+
 cargarTareas();
  

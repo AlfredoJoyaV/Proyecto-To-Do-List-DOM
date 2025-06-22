@@ -131,3 +131,54 @@ li {
     font-size: 0.9rem;
 }
  
+
+/* Estilos para modo oscuro */
+body.modo-oscuro {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+body.modo-oscuro header,
+body.modo-oscuro footer {
+    background-color: #333;
+    color: #f0f0f0;
+}
+
+body.modo-oscuro input,
+body.modo-oscuro button {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 1px solid #777;
+}
+
+body.modo-oscuro #listaTareas li {
+    background-color: #2a2a2a;
+}
+
+body.modo-oscuro #listaTareas li span {
+    color: #f0f0f0;
+}
+
+body.modo-oscuro #modoOscuroBtn {
+    background-color: #444;
+    border: 1px solid #999;
+}
+
+body.modo-oscuro h1{
+    color: white;
+}
+
+#modoOscuroBtn{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
