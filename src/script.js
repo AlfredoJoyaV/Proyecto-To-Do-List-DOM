@@ -112,5 +112,11 @@ function editarTarea(idx) {
     }
 }
 
+//Agregar tarea al dar enter
+inputTarea.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        btnAgregar.click();
+    }
+});
 
 cargarTareas();
