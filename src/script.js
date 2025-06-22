@@ -137,4 +137,5 @@ btnModoOscuro.addEventListener('click', () => {
 });
 
 cargarTareas();
- 
+
+console.log('Script cargado correctamente');
