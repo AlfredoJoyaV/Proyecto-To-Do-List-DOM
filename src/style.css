@@ -99,9 +99,8 @@ li {
  width: 2rem;
 }
  
-#done:hover{
-    background-color: oklch(0.45 0.085 224.283);
-    transform: scale(0.85);
+#done:checked{
+    accent-color: #09840d;
 }
  
 #listaTareas li {
