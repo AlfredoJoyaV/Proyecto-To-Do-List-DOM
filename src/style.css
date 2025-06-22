@@ -101,10 +101,11 @@ li {
     align-items: center;
     justify-content: space-around;
     gap: 10px;
-    background-color: #f2f2f2;
+    background-color: #cefafe;
     padding: 10px;
     border-radius: 5px;
     list-style: none;
+    margin-top: 0.5rem;
 }
 
 
