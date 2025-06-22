@@ -4,21 +4,21 @@
     padding: 0;
     font-family: 'roboto', sans-serif;
 }
-
+ 
 header {
-    background-color: oklch(0.302 0.056 229.695);
+    background-color: #053345;
     color: #fff;
     padding: 1rem;
     text-align: left;
     width: 100%;
 }
-
+ 
 footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background: oklch(0.302 0.056 229.695);
+  background: #053345;
   color: #fff;
   text-align: center;
   padding: 10px 0;
@@ -41,7 +41,7 @@ div .listas h1{
     margin-bottom: 20px;
     text-align: center;
 }
-
+ 
 div .listas input{
     width: 350px;
     height: 30px;
@@ -57,20 +57,28 @@ div .listas button{
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    background-color: oklch(0.302 0.056 229.695);
+    background-color: #053345;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
 }
-
+ 
 div .listas button:hover{
-    background-color: oklch(0.45 0.085 224.283);
+    background-color: #005f78;
     transform: scale(1.05);
 }
-div .listas button:active{
-    background-color: #d0d0d0;
+#agregarTarea:active{
+    background-color: #09840d;
+    transform: scale(0.95);
+}
+#btnEdit:active{
+    background-color: #f2aa1a;
+    transform: scale(0.95);
+}
+#btnDelet:active{
+    background-color: #f21b1b;
     transform: scale(0.95);
 }
 .input-contenedor {
@@ -79,46 +87,47 @@ div .listas button:active{
     gap: 10px;
     margin-bottom: 20px;
 }
-
+ 
 li {
     list-style-type: none;
 }
-
+ 
 #done{
  padding: 0;
  margin: 0;
  cursor: pointer;
  width: 2rem;
 }
-
+ 
 #done:hover{
     background-color: oklch(0.45 0.085 224.283);
     transform: scale(0.85);
 }
-
+ 
 #listaTareas li {
     display: flex;
     align-items: center;
     justify-content: space-around;
     gap: 10px;
-    background-color: #cefafe;
+    background-color: #77c4e8;
     padding: 10px;
     border-radius: 5px;
     list-style: none;
     margin-top: 0.5rem;
 }
-
-
+ 
+ 
 #listaTareas li span {
     flex-grow: 1;
     font-size: 1rem;
     color: #333;
     margin: 0;
 }
-
-
+ 
+ 
 #listaTareas li button {
     height: 30px;
     padding: 5px 10px;
     font-size: 0.9rem;
 }
+ 

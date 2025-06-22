@@ -1,16 +1,16 @@
 import createHeader from './header.js';
 import createFooter from './footer.js';
 import './style.css';
-
+ 
 const app = document.getElementById('app');
-
+ 
 // Importamos en header y fotter
 const header = createHeader();
 document.body.prepend(header);
-
+ 
 const footer = createFooter();
 document.body.appendChild(footer);
-
+ 
 // Hacemos el cuerpo del HTML
 const listasAgregadas = `
 <div class="listas">
@@ -25,33 +25,33 @@ const listasAgregadas = `
     </div>
 </div>
 `;
-
+ 
 const contenedorListas = document.createElement('div');
 contenedorListas.innerHTML = listasAgregadas;
 app.appendChild(contenedorListas);
-
+ 
 // Declaramos las constantes
 const listaTareas = document.getElementById('listaTareas');
 const inputTarea = document.getElementById('listaInput');
 const btnAgregar = document.getElementById('agregarTarea');
-
+ 
 // Lo guardamos en el LocalStorage
 function obtenerTareas() {
     return JSON.parse(localStorage.getItem('tareas')) || [];
 }
-
+ 
 function guardarTareas(tareas) {
     localStorage.setItem('tareas', JSON.stringify(tareas));
 }
-
+ 
 // Hacemos una funcion del cargado de tareas
 function cargarTareas() {
     const tareas = obtenerTareas();
     listaTareas.innerHTML = '';
-
+ 
     tareas.forEach((tareaObj, idx) => {
         const li = document.createElement('li');
-
+ 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id="done";
@@ -61,26 +61,28 @@ function cargarTareas() {
             guardarTareas(tareas);
             cargarTareas();
         });
-
+ 
         const span = document.createElement('span');
         span.textContent = tareaObj.texto;
         if (tareaObj.completada) {
             span.style.textDecoration = 'line-through';
         }
-
+ 
         const btnEditar = document.createElement('button');
         btnEditar.textContent = 'Editar';
+        btnEditar.id = 'btnEdit';
         btnEditar.onclick = () => editarTarea(idx);
-
+ 
         const btnEliminar = document.createElement('button');
         btnEliminar.textContent = 'Eliminar';
+        btnEliminar.id = 'btnDelet';
         btnEliminar.onclick = () => eliminarTarea(idx);
-
+ 
         li.append(checkbox, span,  btnEditar, btnEliminar);
         listaTareas.appendChild(li);
     });
 }
-
+ 
 // Agregamos las tareas
 btnAgregar.addEventListener('click', () => {
     const texto = inputTarea.value.trim();
@@ -92,7 +94,7 @@ btnAgregar.addEventListener('click', () => {
         inputTarea.value = '';
     }
 });
-
+ 
 // Eliminamos tareas
 function eliminarTarea(idx) {
     const tareas = obtenerTareas();
@@ -100,7 +102,7 @@ function eliminarTarea(idx) {
     guardarTareas(tareas);
     cargarTareas();
 }
-
+ 
 // Editamos tareas
 function editarTarea(idx) {
     const tareas = obtenerTareas();
@@ -111,12 +113,13 @@ function editarTarea(idx) {
         cargarTareas();
     }
 }
-
+ 
 //Agregar tarea al dar enter
 inputTarea.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         btnAgregar.click();
     }
 });
-
+ 
 cargarTareas();
+ 
