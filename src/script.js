@@ -3,7 +3,7 @@ import createFooter from './footer.js';
 const app = document.getElementById('app');
 
 const header = createHeader();
-document.body.prepend(header); // O donde quieras agregar el header
+document.body.prepend(header);
 
 const footer = createFooter(); 
 document.body.appendChild(footer); // O donde quieras agregar el footerimport './style.css'
