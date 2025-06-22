@@ -11,9 +11,15 @@ document.body.appendChild(footer); // O donde quieras agregar el footerimport '.
 //Agregar la lista de tareas
 const listasAgregadas = `
 <div class="listas">
+<<<<<<< HEAD
     <h1>Agrega tu lista de tareas</h1>
     <input type="text" id="listaInput" placeholder="Escribe el nombre de la lista">
     <button id="agregarLista">Agregar Tareas</button>
+=======
+    <h1>Agrega una tarea</h1>
+    <input type="text" id="listaInput" placeholder="Escribe una tarea">
+    <button id="agregarTarea">Agregar tarea</button>
+>>>>>>> fb97f615ee8f67670d03209de9f8e039c44ce44a
 </div>    
 `;
 
