@@ -2,12 +2,17 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'roboto', sans-serif;
 }
+
 header {
-    background-color: #282c34;
+    background-color: oklch(0.302 0.056 229.695);
     color: #fff;
     padding: 1rem;
     text-align: left;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 footer {
@@ -15,7 +20,7 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background: #222;
+  background: oklch(0.302 0.056 229.695);
   color: #fff;
   text-align: center;
   padding: 10px 0;
@@ -37,7 +42,6 @@ div .listas h1{
     color: #333;
     margin-bottom: 20px;
     text-align: center;
-    font-family: 'roboto', sans-serif;
 }
 
 div .listas input{
@@ -55,15 +59,16 @@ div .listas button{
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    background-color: #f0f0f0;
+    background-color: oklch(0.302 0.056 229.695);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
 div .listas button:hover{
-    background-color: #e0e0e0;
+    background-color: oklch(0.45 0.085 224.283);
     transform: scale(1.05);
 }
 div .listas button:active{

@@ -11,9 +11,9 @@ document.body.prepend(header); // O donde quieras agregar el header
 //Agregar la lista de tareas
 const listasAgregadas = `
 <div class="listas">
-    <h1>Agrega tu lista de tareas</h1>
-    <input type="text" id="listaInput" placeholder="Escribe el nombre de la lista">
-    <button id="agregarLista">Agregar Lista</button>
+    <h1>Agrega una tarea</h1>
+    <input type="text" id="listaInput" placeholder="Escribe una tarea">
+    <button id="agregarTarea">Agregar tarea</button>
 </div>    
 `;
 
